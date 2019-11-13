@@ -13,7 +13,7 @@ const path = require('path');
 
 imagesSchema.virtual('uniqueId')
             .get(function() {
-                return this.filename.remplace(path.extname(this.filename))
+                return this.filename.replace(path.extname(this.filename),'');
             })
 
 module.exports = model('Image',imagesSchema);

@@ -6,7 +6,7 @@ module.exports = app => {
     
     router.get('/',homeCtrl.getHome);
     router.get('/image',imageCrtl.index);
-    router.get('/image:id',imageCrtl.getImg);
+    router.get('/image/:image_id',imageCrtl.getImg);
     router.post('/image',imageCrtl.createImg);
     router.post('/image/:image_id/like',imageCrtl.like);
     router.post('/image/:image_id/comments',imageCrtl.comments);

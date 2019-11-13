@@ -9,3 +9,9 @@
 .mt-2 {
    margin-top: 2rem;
 }
+.card-image img {
+   width: 100%;
+}
+.action-link {
+   color: #7e2ee1 !important;
+}
