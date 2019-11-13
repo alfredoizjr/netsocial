@@ -1,7 +1,7 @@
 const homeCtrl = {}
 
 homeCtrl.getHome = ( req, res) => {
-    res.send('welcome');
+    res.render('index');
 }
 
 module.exports = homeCtrl;
