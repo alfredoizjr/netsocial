@@ -27,7 +27,7 @@ imgCrtl.createImg = (req, res) => {
                   description: req.body.description
               });
              const imageSave = await newImg.save();
-             res.redirect('/image');
+             res.redirect('/image/' + imgUrl);
             } else {
               await fs.unlink(imageTempPath);
               res.status(500).json({error: 'Only images are allowed'})
@@ -43,8 +43,10 @@ imgCrtl.like = (req, res) => {
   res.send("image create");
 };
 
-imgCrtl.getImg = (req, res) => {
-  res.send("get image");
+imgCrtl.getImg = async (req, res) => {
+  const image = await Image.findOne({filename: {$regex: req.params.image_id}});
+  console.log(image);
+  res.render("image",{image});
 };
 
 imgCrtl.comments = (req, res) => {
