@@ -2,7 +2,8 @@ const imgCrtl = {};
 const path = require("path");
 const { ramdomNumbers } = require("../helpers/libs");
 const fs = require("fs-extra");
-const {Image} = require('../models');
+const {Image,Comments} = require('../models');
+const md5 = require('md5');
 
 imgCrtl.index = (req, res) => {
   res.send("image index");
@@ -45,12 +46,20 @@ imgCrtl.like = (req, res) => {
 
 imgCrtl.getImg = async (req, res) => {
   const image = await Image.findOne({filename: {$regex: req.params.image_id}});
-  console.log(image);
-  res.render("image",{image});
+  const comments = await Comments.find({image_id: image._id});
+  res.render("image",{image,comments});
 };
 
-imgCrtl.comments = (req, res) => {
-  res.send("get image");
+imgCrtl.comments = async (req, res) => {
+  const image = await Image.findOne({filename: {$regex: req.params.image_id}});
+  if(image) {
+    const newComment = new Comments(req.body);
+    newComment.gravatar = md5(newComment.email);
+    newComment.image_id = image._id;
+    await newComment.save();
+  res.redirect('/image/'+ image.uniqueId);
+  }
+  
 };
 
 imgCrtl.deleteImg = (req, res) => {

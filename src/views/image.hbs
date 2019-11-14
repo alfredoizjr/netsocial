@@ -4,7 +4,8 @@
     </div>
     <div class="card-stacked">
         <div class="card-content">
-            <h2 class="card-title">{{image.title}}<small> <i class="tiny material-icons"> access_time </i> {{timeAgo image.timestamp}}</small></h2>
+            <h2 class="card-title">{{image.title}}<small> <i class="tiny material-icons"> access_time </i>
+                    {{timeAgo image.timestamp}}</small></h2>
             <p>{{image.description}}</p>
         </div>
         <div class="card-action">
@@ -13,8 +14,51 @@
             <button class="btn red darker-4" id="btn-delete" fata-id="{{image.uniqueId}}"><i
                     class="material-icons">delete_forever</i></button>
             <span class="likes-counts"><span class="badge">
-                <i class="material-icons">remove_red_eye</i>{{image.views}}</span><span class="badge">
-                <i class="material-icons">how_to_reg</i>{{image.likes}}</span></span>
+                    <i class="material-icons">remove_red_eye</i>{{image.views}}</span><span class="badge">
+                    <i class="material-icons">how_to_reg</i>{{image.likes}}</span></span>
+        </div>
+    </div>
+</div>
+  <ul class="collection">
+    {{#each comments}}  
+    <li class="collection-item avatar">
+      <img src="http://gravatar.com/avatar/{{gravatar}}" alt="" class="circle">
+      <span class="title">{{name}}</span>
+      <p><i><i class="tiny material-icons"> access_time </i>{{timeAgo timestamp}}</i></p>
+      <hr>
+      <p> {{email}}<br>
+         {{comments}}
+      </p>
+      <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
+    </li>
+    {{/each}}  
+   </ul> 
+<div class="card">
+    <div class="card-content">
+        <div class="row">
+            <div class="col s6 right-left">
+                <h5>Coments</h5>
+            </div>
+            <div class="col s6 right-align">
+                <button class="btn purple darker-4">Comments</button>
+            </div>
+            <div class="col s12">
+                <form action="/image/{{image.uniqueId}}/comments" method="POST">
+                   <div class="input-field">
+                        <input id="name" type="text" class="validate" name="name" required>
+                        <label class="active" for="name">Name</label>
+                    </div>
+                    <div class="input-field">
+                        <input id="email" type="text" class="validate" name="email" required>
+                        <label class="active" for="email">email</label>
+                    </div>
+                    <div class="input-field">
+                        <textarea id="textarea1" class="materialize-textarea" name="comments" required></textarea>
+                        <label for="textarea1">Comments</label>
+                    </div>
+                    <button type="submit" class="btn purple darker-4">Post</button>
+                </form>
+            </div>
         </div>
     </div>
 </div>
