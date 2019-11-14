@@ -9,13 +9,13 @@
             <p>{{image.description}}</p>
         </div>
         <div class="card-action">
-            <button class="btn purple darker-4" id="btn-like" fata-id="{{image.uniqueId}}"><i
+            <button class="btn purple darker-4" id="btn-like" data-id="{{image.uniqueId}}"><i
                     class="material-icons">thumb_up</i></button>
             <button class="btn red darker-4" id="btn-delete" fata-id="{{image.uniqueId}}"><i
                     class="material-icons">delete_forever</i></button>
             <span class="likes-counts"><span class="badge">
                     <i class="material-icons">remove_red_eye</i>{{image.views}}</span><span class="badge">
-                    <i class="material-icons">how_to_reg</i>{{image.likes}}</span></span>
+                    <i class="material-icons">how_to_reg</i><span id="likes-count">{{image.likes}}</span></span></span>
         </div>
     </div>
 </div>

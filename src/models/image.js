@@ -7,7 +7,7 @@ const path = require('path');
     description: {type: String},
     filename: {type: String},
     views: {type: Number, default: 0},
-    likes: {type: String, default: 0},
+    likes: {type: Number, default: 0},
     timestamp: {type: Date, default: Date.now()}
 });
 
